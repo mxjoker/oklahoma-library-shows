@@ -240,10 +240,7 @@ footer{background:#0F1E35;color:rgba(255,255,255,0.62);padding:3rem 2rem 2rem}
       <button class="btn-hero" onclick="openModal('Professor Buckets Bubble Show')">Book this show</button>
     </div>
     <div>
-      <div class="photo-ph">
-        <span style="font-size:2.5rem">📷</span>
-        <p>Joe performing bubble show — Kid-in-a-Bubble finale</p>
-      </div>
+      <img src="/assets/images/Professor Bubbles- Giant Bubble.JPEG" alt="Professor Buckets creating a giant bubble during Oklahoma library show" style="width:100%;border-radius:12px;display:block;object-fit:cover;aspect-ratio:16/9;">
     </div>
   </div>
 </section>
@@ -357,18 +354,9 @@ footer{background:#0F1E35;color:rgba(255,255,255,0.62);padding:3rem 2rem 2rem}
     <p class="slabel">Photo gallery</p>
     <h2 class="stitle">See it in action</h2>
     <div class="gallery-grid">
-      <div class="photo-ph-light">
-        <span style="font-size:2.5rem">📷</span>
-        <p>Giant bubble moment or kid inside bubble</p>
-      </div>
-      <div class="photo-ph-light">
-        <span style="font-size:2.5rem">📷</span>
-        <p>Kids watching in amazement during bubble show</p>
-      </div>
-      <div class="photo-ph-light">
-        <span style="font-size:2.5rem">📷</span>
-        <p>Bubble science demonstration close-up</p>
-      </div>
+      <img src="/assets/images/Professor Bubbles- Giant Bubble.JPEG" alt="Giant bubble demonstration during Professor Buckets show at Oklahoma library" style="width:100%;border-radius:12px;display:block;object-fit:cover;aspect-ratio:16/9;">
+      <img src="/assets/images/Professor Bubbles Selfie.JPG" alt="Joe Coover as Professor Buckets with kids after bubble show at library" style="width:100%;border-radius:12px;display:block;object-fit:cover;aspect-ratio:16/9;">
+      <img src="/assets/images/Joe Performing at library.JPG" alt="Joe Coover performing at Oklahoma public library summer reading program" style="width:100%;border-radius:12px;display:block;object-fit:cover;aspect-ratio:16/9;">
     </div>
   </div>
 </section>
@@ -553,11 +541,7 @@ function closeModal(){
   document.body.style.overflow='';
 }
 function bgClose(e){if(e.target===document.getElementById('mo'))closeModal();}
-function handleSub(e){
-  e.preventDefault();
-  document.getElementById('bform').style.display='none';
-  document.getElementById('suc').style.display='block';
-}
+function handleSub(e){e.preventDefault();const f=e.target;fetch('/',{method:'POST',headers:{'Content-Type':'application/x-www-form-urlencoded'},body:new URLSearchParams(new FormData(f)).toString()}).then(()=>{f.style.display='none';document.getElementById('suc').style.display='block';}).catch(()=>{alert('Submission error. Please call (405) 431-6625 or email joe.coover@gmail.com.');});}
 document.addEventListener('keydown',e=>{if(e.key==='Escape')closeModal();});
 </script>
 </body>

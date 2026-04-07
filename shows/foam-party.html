@@ -216,10 +216,7 @@ footer{background:#0F1E35;color:rgba(255,255,255,0.62);padding:3rem 2rem 2rem}
       </div>
     </div>
     <div>
-      <div class="photo-ph">
-        <span style="font-size:2.5rem">📷</span>
-        <p>Outdoor foam party in action — wide summer energy shot</p>
-      </div>
+      <img src="/assets/images/Foam-Hero.png" alt="Outdoor foam party at Oklahoma library — kids playing in foam during summer reading program" style="width:100%;border-radius:12px;display:block;object-fit:cover;aspect-ratio:16/9;">
     </div>
   </div>
 </section>
@@ -355,18 +352,9 @@ footer{background:#0F1E35;color:rgba(255,255,255,0.62);padding:3rem 2rem 2rem}
     <p class="slabel">Photo gallery</p>
     <h2 class="stitle">See it in action</h2>
     <div class="gallery-grid">
-      <div class="photo-ph-light">
-        <span style="font-size:2.5rem">📷</span>
-        <p>Full outdoor foam party action shot — summer energy</p>
-      </div>
-      <div class="photo-ph-light">
-        <span style="font-size:2.5rem">📷</span>
-        <p>Foam machine in action at library outdoor space</p>
-      </div>
-      <div class="photo-ph-light">
-        <span style="font-size:2.5rem">📷</span>
-        <p>Kids laughing in the foam</p>
-      </div>
+      <img src="/assets/images/Foam-Hero.png" alt="Outdoor library foam party — kids covered in foam during summer reading program" style="width:100%;border-radius:12px;display:block;object-fit:cover;aspect-ratio:16/9;">
+      <img src="/assets/images/Foam Kid Pic.png" alt="Child laughing in foam at outdoor Oklahoma library foam party" style="width:100%;border-radius:12px;display:block;object-fit:cover;aspect-ratio:16/9;">
+      <img src="/assets/images/Foam Sooner Mascot.png" alt="Foam party fun at Oklahoma library summer reading event" style="width:100%;border-radius:12px;display:block;object-fit:cover;aspect-ratio:16/9;">
     </div>
   </div>
 </section>
@@ -520,7 +508,7 @@ function upd(){
 function openModal(pre){document.getElementById('mo').classList.add('open');document.body.style.overflow='hidden';if(!document.getElementById('sreqs').children.length)addReq(pre);else if(pre)addReq(pre);}
 function closeModal(){document.getElementById('mo').classList.remove('open');document.body.style.overflow='';}
 function bgClose(e){if(e.target===document.getElementById('mo'))closeModal();}
-function handleSub(e){e.preventDefault();document.getElementById('bform').style.display='none';document.getElementById('suc').style.display='block';}
+function handleSub(e){e.preventDefault();const f=e.target;fetch('/',{method:'POST',headers:{'Content-Type':'application/x-www-form-urlencoded'},body:new URLSearchParams(new FormData(f)).toString()}).then(()=>{f.style.display='none';document.getElementById('suc').style.display='block';}).catch(()=>{alert('Submission error. Please call (405) 431-6625 or email joe.coover@gmail.com.');});}
 document.addEventListener('keydown',e=>{if(e.key==='Escape')closeModal();});
 </script>
 </body>

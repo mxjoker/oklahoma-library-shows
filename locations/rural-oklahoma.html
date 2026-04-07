@@ -279,7 +279,7 @@ function upd(){const items=document.querySelectorAll('.sreq');const box=document
 function openModal(pre){document.getElementById('mo').classList.add('open');document.body.style.overflow='hidden';if(!document.getElementById('sreqs').children.length)addReq(pre);else if(pre)addReq(pre);}
 function closeModal(){document.getElementById('mo').classList.remove('open');document.body.style.overflow='';}
 function bgClose(e){if(e.target===document.getElementById('mo'))closeModal();}
-function handleSub(e){e.preventDefault();document.getElementById('bform').style.display='none';document.getElementById('suc').style.display='block';}
+function handleSub(e){e.preventDefault();const f=e.target;fetch('/',{method:'POST',headers:{'Content-Type':'application/x-www-form-urlencoded'},body:new URLSearchParams(new FormData(f)).toString()}).then(()=>{f.style.display='none';document.getElementById('suc').style.display='block';}).catch(()=>{alert('Submission error. Please call (405) 431-6625 or email joe.coover@gmail.com.');});}
 document.addEventListener('keydown',e=>{if(e.key==='Escape')closeModal();});
 </script>
 </body>

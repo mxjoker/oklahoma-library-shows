@@ -182,10 +182,7 @@ footer{background:#0F1E35;color:rgba(255,255,255,0.62);padding:3rem 2rem 2rem}
       <p>I'm ODL-listed, insured, and I've performed at libraries across Oklahoma, Texas, Kansas, Arkansas, and Missouri. I respond to every inquiry within 24 hours and accept purchase orders. That's the whole pitch.</p>
     </div>
     <div class="hero-photo">
-      <div class="hero-photo-placeholder">
-        <div>📸</div>
-        <p>Photo coming soon</p>
-      </div>
+      <img src="/assets/images/Joe-headshot.jpg" alt="Joe Coover — children's entertainer and founder of Funky Monkey Events" style="width:100%;border-radius:16px;display:block;object-fit:cover;aspect-ratio:4/5;">
     </div>
   </div>
 </section>
@@ -396,7 +393,7 @@ function upd(){
 function openModal(pre){document.getElementById('mo').classList.add('open');document.body.style.overflow='hidden';if(!document.getElementById('sreqs').children.length)addReq(pre);else if(pre)addReq(pre);}
 function closeModal(){document.getElementById('mo').classList.remove('open');document.body.style.overflow='';}
 function bgClose(e){if(e.target===document.getElementById('mo'))closeModal();}
-function handleSub(e){e.preventDefault();document.getElementById('bform').style.display='none';document.getElementById('suc').style.display='block';}
+function handleSub(e){e.preventDefault();const f=e.target;fetch('/',{method:'POST',headers:{'Content-Type':'application/x-www-form-urlencoded'},body:new URLSearchParams(new FormData(f)).toString()}).then(()=>{f.style.display='none';document.getElementById('suc').style.display='block';}).catch(()=>{alert('Submission error. Please call (405) 431-6625 or email joe.coover@gmail.com.');});}
 document.addEventListener('keydown',e=>{if(e.key==='Escape')closeModal();});
 </script>
 </body>

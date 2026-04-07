@@ -206,10 +206,7 @@ footer{background:#0F1E35;color:rgba(255,255,255,0.62);padding:3rem 2rem 2rem}
       <button class="btn-hero" onclick="openModal('Hands-on Magic Trick Workshop')">Book this show</button>
     </div>
     <div>
-      <div class="photo-ph">
-        <span style="font-size:2.5rem">📷</span>
-        <p>Kids learning magic tricks at library workshop — Joe coaching</p>
-      </div>
+      <img src="/assets/images/Kid laughing mid trick with Joe.JPG" alt="Kid laughing while learning a magic trick with Joe Coover at library workshop" style="width:100%;border-radius:12px;display:block;object-fit:cover;aspect-ratio:16/9;">
     </div>
   </div>
 </section>
@@ -321,18 +318,9 @@ footer{background:#0F1E35;color:rgba(255,255,255,0.62);padding:3rem 2rem 2rem}
     <p class="slabel">Photo gallery</p>
     <h2 class="stitle">See it in action</h2>
     <div class="gallery-grid">
-      <div class="photo-ph-light">
-        <span style="font-size:2.5rem">📷</span>
-        <p>Kids practicing magic tricks at library workshop</p>
-      </div>
-      <div class="photo-ph-light">
-        <span style="font-size:2.5rem">📷</span>
-        <p>Child's hands performing card trick learned at workshop</p>
-      </div>
-      <div class="photo-ph-light">
-        <span style="font-size:2.5rem">📷</span>
-        <p>Kids smiling after successfully performing their tricks</p>
-      </div>
+      <img src="/assets/images/Kid laughing mid trick with Joe.JPG" alt="Kid laughing while learning a magic trick at library workshop" style="width:100%;border-radius:12px;display:block;object-fit:cover;aspect-ratio:16/9;">
+      <img src="/assets/images/DM-Promo-Cards1.jpg" alt="Magic card trick being performed at Oklahoma library workshop" style="width:100%;border-radius:12px;display:block;object-fit:cover;aspect-ratio:16/9;">
+      <img src="/assets/images/Library Group Selfie.JPG" alt="Happy group of kids after magic workshop at Oklahoma public library" style="width:100%;border-radius:12px;display:block;object-fit:cover;aspect-ratio:16/9;">
     </div>
   </div>
 </section>
@@ -472,7 +460,7 @@ function upd(){
 function openModal(pre){document.getElementById('mo').classList.add('open');document.body.style.overflow='hidden';if(!document.getElementById('sreqs').children.length)addReq(pre);else if(pre)addReq(pre);}
 function closeModal(){document.getElementById('mo').classList.remove('open');document.body.style.overflow='';}
 function bgClose(e){if(e.target===document.getElementById('mo'))closeModal();}
-function handleSub(e){e.preventDefault();document.getElementById('bform').style.display='none';document.getElementById('suc').style.display='block';}
+function handleSub(e){e.preventDefault();const f=e.target;fetch('/',{method:'POST',headers:{'Content-Type':'application/x-www-form-urlencoded'},body:new URLSearchParams(new FormData(f)).toString()}).then(()=>{f.style.display='none';document.getElementById('suc').style.display='block';}).catch(()=>{alert('Submission error. Please call (405) 431-6625 or email joe.coover@gmail.com.');});}
 document.addEventListener('keydown',e=>{if(e.key==='Escape')closeModal();});
 </script>
 </body>
