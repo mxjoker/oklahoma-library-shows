@@ -4,9 +4,6 @@
 [build.environment]
   NODE_VERSION = "18"
 
-# Form spam filtering
-[[plugins]]
-
 # Headers for security and performance
 [[headers]]
   for = "/*"
