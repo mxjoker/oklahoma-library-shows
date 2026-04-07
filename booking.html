@@ -146,7 +146,8 @@ footer{background:#0F1E35;color:rgba(255,255,255,0.62);padding:3rem 2rem 2rem}
       <p>Tell us which programs you want and your preferred dates. We'll review your request and respond within 24 hours with a proposed schedule and availability confirmation.</p>
       <ul class="trust-list">
         <li>$385 per show — all-inclusive pricing</li>
-        <li>No travel fee in OKC and Tulsa metros</li>
+        <li>No travel fee in the OKC metro area</li>
+        <li>Travel fee at IRS mileage rate — quoted upfront, no surprises</li>
         <li>Purchase orders and checks accepted</li>
         <li>ODL-listed and fully insured</li>
         <li>Multiple branches? One inquiry covers all</li>
@@ -286,5 +287,14 @@ function handleSub(e){e.preventDefault();const f=e.target;fetch('/',{method:'POS
 document.addEventListener('keydown',e=>{if(e.key==='Escape')closeModal();});
 addReq();
 </script>
+<script>
+// Nav dropdown — hover with gap-bridge + click support
+document.querySelectorAll('.nav-dd').forEach(function(dd){
+  var t,m=dd.querySelector('.nav-dd-menu');
+  dd.addEventListener('mouseenter',function(){clearTimeout(t);m.style.display='block';});
+  dd.addEventListener('mouseleave',function(){t=setTimeout(function(){m.style.display='none';},150);});
+  dd.querySelector('button').addEventListener('click',function(e){e.stopPropagation();m.style.display=m.style.display==='block'?'none':'block';});
+});
+document.addEventListener('click',function(e){if(!e.target.closest('.nav-dd'))document.querySelectorAll('.nav-dd-menu').forEach(function(m){m.style.display='none';});});</script>
 </body>
 </html>

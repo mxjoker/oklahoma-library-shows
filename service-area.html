@@ -4,10 +4,10 @@
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 <title>Service Area | Oklahoma Library Shows — Funky Monkey Events</title>
-<meta name="description" content="Oklahoma Library Shows serves libraries across Oklahoma, Texas, Kansas, Arkansas, and Missouri. No travel fee in OKC and Tulsa metros. See our full coverage area."/>
+<meta name="description" content="Oklahoma Library Shows serves libraries across Oklahoma, Texas, Kansas, Arkansas, and Missouri. No travel fee in the OKC metro. Travel fee at the IRS mileage rate for all other areas — always quoted upfront."/>
 <link rel="canonical" href="https://www.oklahomalibraryshows.com/service-area.html"/>
 <meta property="og:title" content="Service Area — Oklahoma Library Shows"/>
-<meta property="og:description" content="We serve libraries across Oklahoma and into Texas, Kansas, Arkansas, and Missouri. No travel fee in the OKC and Tulsa metros."/>
+<meta property="og:description" content="We serve libraries across Oklahoma and into Texas, Kansas, Arkansas, and Missouri. No travel fee in the OKC metro. Travel fee at the IRS mileage rate for all other areas."/>
 <meta property="og:url" content="https://www.oklahomalibraryshows.com/service-area.html"/>
 <meta property="og:type" content="website"/>
 <meta property="og:site_name" content="Oklahoma Library Shows"/>
@@ -176,7 +176,7 @@ footer{background:#0F1E35;color:rgba(255,255,255,0.62);padding:3rem 2rem 2rem}
   <div class="page-hero-inner">
     <p class="slabel">Where we perform</p>
     <h1>Service area</h1>
-    <p class="hook">Based in Oklahoma City, we serve libraries across Oklahoma and into Texas, Kansas, Arkansas, and Missouri. No travel fee in the OKC and Tulsa metros.</p>
+    <p class="hook">Based in Oklahoma City, we serve libraries across Oklahoma and into Texas, Kansas, Arkansas, and Missouri. No travel fee in the OKC metro. Travel fee at the current IRS mileage rate for all other areas — always quoted upfront.</p>
   </div>
 </section>
 
@@ -197,8 +197,8 @@ footer{background:#0F1E35;color:rgba(255,255,255,0.62);padding:3rem 2rem 2rem}
       <div class="area-card">
         <div class="ac-flag">🌆</div>
         <h3>Tulsa Metro</h3>
-        <span class="fee-tag free">No travel fee</span>
-        <p>All Tulsa metro libraries served with no travel fee. Includes Broken Arrow, Jenks, Sand Springs, Owasso, Bixby, and surrounding communities.</p>
+        <span class="fee-tag low">Travel fee applies</span>
+        <p>Tulsa-area libraries served at the current IRS mileage rate. For multi-branch systems, travel is consolidated across your whole weekly schedule — not charged per show or per branch.</p>
         <ul class="city-list">
           <li>Broken Arrow</li><li>Jenks</li><li>Owasso</li><li>Sand Springs</li><li>Bixby</li>
         </ul>
@@ -243,8 +243,8 @@ footer{background:#0F1E35;color:rgba(255,255,255,0.62);padding:3rem 2rem 2rem}
 
     <div class="travel-note">
       <h4>Travel fee policy</h4>
-      <p>No travel fee for libraries within approximately 90 miles of Oklahoma City. For libraries beyond that radius, a travel fee of approximately $0.50/mile over the threshold applies. We always disclose this upfront — no surprises on your invoice.</p>
-      <p>For multi-branch systems, travel fees are calculated once for the whole week's schedule, not per show. This makes bulk booking significantly more cost-effective for distant libraries.</p>
+      <p>No travel fee for libraries in the OKC metro area. For all other areas, travel is billed at the current IRS standard mileage rate — always disclosed upfront, no surprises on your invoice.</p>
+      <p>For multi-branch systems and libraries that want to combine multiple shows on one trip, travel fees are consolidated across the entire schedule rather than charged per show. We're happy to work with you to route efficiently and keep costs down — just mention that in your inquiry.</p>
     </div>
   </div>
 </section>
@@ -260,7 +260,7 @@ footer{background:#0F1E35;color:rgba(255,255,255,0.62);padding:3rem 2rem 2rem}
       </a>
       <a class="loc-link" href="/locations/tulsa.html">
         <h4>Tulsa</h4>
-        <p>No travel fee · Tulsa metro</p>
+        <p>Travel fee applies · IRS rate · quoted upfront</p>
       </a>
       <a class="loc-link" href="/locations/eastern-oklahoma.html">
         <h4>Eastern Oklahoma</h4>
@@ -415,5 +415,14 @@ function bgClose(e){if(e.target===document.getElementById('mo'))closeModal();}
 function handleSub(e){e.preventDefault();const f=e.target;fetch('/',{method:'POST',headers:{'Content-Type':'application/x-www-form-urlencoded'},body:new URLSearchParams(new FormData(f)).toString()}).then(()=>{f.style.display='none';document.getElementById('suc').style.display='block';}).catch(()=>{alert('Submission error. Please call (405) 431-6625 or email joe.coover@gmail.com.');});}
 document.addEventListener('keydown',e=>{if(e.key==='Escape')closeModal();});
 </script>
+<script>
+// Nav dropdown — hover with gap-bridge + click support
+document.querySelectorAll('.nav-dd').forEach(function(dd){
+  var t,m=dd.querySelector('.nav-dd-menu');
+  dd.addEventListener('mouseenter',function(){clearTimeout(t);m.style.display='block';});
+  dd.addEventListener('mouseleave',function(){t=setTimeout(function(){m.style.display='none';},150);});
+  dd.querySelector('button').addEventListener('click',function(e){e.stopPropagation();m.style.display=m.style.display==='block'?'none':'block';});
+});
+document.addEventListener('click',function(e){if(!e.target.closest('.nav-dd'))document.querySelectorAll('.nav-dd-menu').forEach(function(m){m.style.display='none';});});</script>
 </body>
 </html>

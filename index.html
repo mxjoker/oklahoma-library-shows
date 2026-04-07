@@ -349,7 +349,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:1000;background:var(--navy);disp
     <h2 class="stitle">Oklahoma &amp; surrounding states</h2>
     <p class="ssub">Based in Oklahoma City, we serve all of Oklahoma as our primary market with regular travel to neighboring states. Contact us for travel fee details outside metro areas.</p>
     <div class="sgrid">
-      <div class="scard sp"><div class="sflag">🏛️</div><h4>Oklahoma</h4><p>Primary coverage · No travel fee in metro areas</p></div>
+      <div class="scard sp"><div class="sflag">🏛️</div><h4>Oklahoma</h4><p>Primary coverage · No travel fee in the OKC metro</p></div>
       <div class="scard ss"><div class="sflag">⭐</div><h4>Texas</h4><p>Available · Travel fee applies</p></div>
       <div class="scard ss"><div class="sflag">🌻</div><h4>Kansas</h4><p>Available · Travel fee applies</p></div>
       <div class="scard ss"><div class="sflag">🌲</div><h4>Arkansas</h4><p>Available · Travel fee applies</p></div>
@@ -476,21 +476,23 @@ footer{background:#0F1E35;color:rgba(255,255,255,0.62);padding:3rem 2rem 2rem}
         <h3>Request sent!</h3>
         <p>Thank you! We'll review your request and reach out within 24 hours to confirm availability and discuss your dates. We look forward to bringing the magic to your library!</p>
       </div>
-      <form id="bform" onsubmit="handleSub(event)">
+      <form id="bform" name="library-booking" method="POST" data-netlify="true" onsubmit="handleSub(event)">
+        <input type="hidden" name="form-name" value="library-booking">
+        <input type="hidden" name="show_requests" id="show_requests_field">
         <p class="fst">Library information</p>
-        <div class="fg"><label>Library name <span class="rq">*</span></label><input type="text" placeholder="e.g. Norman Public Library" required></div>
+        <div class="fg"><label>Library name <span class="rq">*</span></label><input type="text" name="library" placeholder="e.g. Norman Public Library" required></div>
         <div class="frow">
-          <div class="fg"><label>Your name <span class="rq">*</span></label><input type="text" placeholder="First and last name" required></div>
-          <div class="fg"><label>Your title</label><input type="text" placeholder="e.g. Children's Librarian"></div>
+          <div class="fg"><label>Your name <span class="rq">*</span></label><input type="text" name="name" placeholder="First and last name" required></div>
+          <div class="fg"><label>Your title</label><input type="text" name="title" placeholder="e.g. Children's Librarian"></div>
         </div>
         <div class="frow">
-          <div class="fg"><label>Email <span class="rq">*</span></label><input type="email" placeholder="your@library.org" required></div>
-          <div class="fg"><label>Phone</label><input type="tel" placeholder="(405) 555-0000"></div>
+          <div class="fg"><label>Email <span class="rq">*</span></label><input type="email" name="email" placeholder="your@library.org" required></div>
+          <div class="fg"><label>Phone</label><input type="tel" name="phone" placeholder="(405) 555-0000"></div>
         </div>
         <div class="frow">
-          <div class="fg"><label>City <span class="rq">*</span></label><input type="text" placeholder="City name" required></div>
+          <div class="fg"><label>City <span class="rq">*</span></label><input type="text" name="city" placeholder="City name" required></div>
           <div class="fg"><label>State <span class="rq">*</span></label>
-            <select required>
+            <select name="state" required>
               <option value="">Select state</option>
               <option>Oklahoma</option><option>Texas</option><option>Kansas</option>
               <option>Arkansas</option><option>Missouri</option><option>Other</option>
@@ -503,7 +505,7 @@ footer{background:#0F1E35;color:rgba(255,255,255,0.62);padding:3rem 2rem 2rem}
         <button type="button" class="addbtn" onclick="addReq()">+ Add another show</button>
         <p class="fst" style="margin-top:1.5rem">Request summary</p>
         <div class="sumbox" id="sumbox"><p>Your show requests will appear here as you add them.</p></div>
-        <div class="fg"><label>Additional notes</label><textarea placeholder="Expected audience size, multi-branch system, special requirements, etc."></textarea></div>
+        <div class="fg"><label>Additional notes</label><textarea name="notes" placeholder="Expected audience size, multi-branch system, special requirements, etc."></textarea></div>
         <button type="submit" class="subbtn">Send my request 🎩</button>
         <p class="fnote2">We accept purchase orders and checks. No payment required to hold your dates.<br>We respond to all inquiries within 24 hours.</p>
       </form>
@@ -585,9 +587,18 @@ function closeModal(){
   document.body.style.overflow='';
 }
 
-function handleSub(e){e.preventDefault();const f=e.target;fetch('/',{method:'POST',headers:{'Content-Type':'application/x-www-form-urlencoded'},body:new URLSearchParams(new FormData(f)).toString()}).then(()=>{f.style.display='none';document.getElementById('suc').style.display='block';}).catch(()=>{alert('Submission error. Please call (405) 431-6625 or email joe.coover@gmail.com.');});}
+function handleSub(e){e.preventDefault();const f=e.target;const sr=document.getElementById('show_requests_field');if(sr){const box=document.getElementById('sumbox');sr.value=box?box.innerText.trim():'';}fetch('/',{method:'POST',headers:{'Content-Type':'application/x-www-form-urlencoded'},body:new URLSearchParams(new FormData(f)).toString()}).then(()=>{f.style.display='none';document.getElementById('suc').style.display='block';}).catch(()=>{alert('Submission error. Please call (405) 431-6625 or email joe.coover@gmail.com.');});}
 
 document.addEventListener('keydown',e=>{if(e.key==='Escape')closeModal();});
 </script>
+<script>
+// Nav dropdown — hover with gap-bridge + click support
+document.querySelectorAll('.nav-dd').forEach(function(dd){
+  var t,m=dd.querySelector('.nav-dd-menu');
+  dd.addEventListener('mouseenter',function(){clearTimeout(t);m.style.display='block';});
+  dd.addEventListener('mouseleave',function(){t=setTimeout(function(){m.style.display='none';},150);});
+  dd.querySelector('button').addEventListener('click',function(e){e.stopPropagation();m.style.display=m.style.display==='block'?'none':'block';});
+});
+document.addEventListener('click',function(e){if(!e.target.closest('.nav-dd'))document.querySelectorAll('.nav-dd-menu').forEach(function(m){m.style.display='none';});});</script>
 </body>
 </html>

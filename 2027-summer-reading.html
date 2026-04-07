@@ -356,9 +356,9 @@ nav{position:fixed;top:0;left:0;right:0;z-index:1000;background:var(--navy);disp
   <div class="area27-inner">
     <div>
       <h3>📍 Service Area</h3>
-      <p>Based in Oklahoma City — no travel fee in OKC and Tulsa metro areas. We travel statewide and into surrounding states.</p>
+      <p>Based in Oklahoma City — no travel fee in the OKC metro area. Travel fee at the IRS mileage rate for all other areas, always quoted upfront.</p>
       <div class="area-states">
-        <span class="astate primary">Oklahoma ✓ No travel fee in metro</span>
+        <span class="astate primary">Oklahoma ✓ No travel fee in OKC metro</span>
         <span class="astate">Texas</span>
         <span class="astate">Kansas</span>
         <span class="astate">Arkansas</span>
@@ -538,5 +538,14 @@ function toggleFaq(btn){const item=btn.closest('.faq-item');item.classList.toggl
 document.addEventListener('keydown',e=>{if(e.key==='Escape')closeModal();});
 document.getElementById('mo').addEventListener('click',function(e){if(e.target===this)closeModal();});
 </script>
+<script>
+// Nav dropdown — hover with gap-bridge + click support
+document.querySelectorAll('.nav-dd').forEach(function(dd){
+  var t,m=dd.querySelector('.nav-dd-menu');
+  dd.addEventListener('mouseenter',function(){clearTimeout(t);m.style.display='block';});
+  dd.addEventListener('mouseleave',function(){t=setTimeout(function(){m.style.display='none';},150);});
+  dd.querySelector('button').addEventListener('click',function(e){e.stopPropagation();m.style.display=m.style.display==='block'?'none':'block';});
+});
+document.addEventListener('click',function(e){if(!e.target.closest('.nav-dd'))document.querySelectorAll('.nav-dd-menu').forEach(function(m){m.style.display='none';});});</script>
 </body>
 </html>

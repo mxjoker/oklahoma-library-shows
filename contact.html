@@ -365,5 +365,14 @@ function handleSub(e){e.preventDefault();const f=e.target;fetch('/',{method:'POS
 function handleContact(e){e.preventDefault();const f=e.target;fetch('/',{method:'POST',headers:{'Content-Type':'application/x-www-form-urlencoded'},body:new URLSearchParams(new FormData(f)).toString()}).then(()=>{f.style.display='none';document.getElementById('fsuc').style.display='block';}).catch(()=>{alert('Submission error. Please call (405) 431-6625 or email joe.coover@gmail.com.');});}
 document.addEventListener('keydown',e=>{if(e.key==='Escape')closeModal();});
 </script>
+<script>
+// Nav dropdown — hover with gap-bridge + click support
+document.querySelectorAll('.nav-dd').forEach(function(dd){
+  var t,m=dd.querySelector('.nav-dd-menu');
+  dd.addEventListener('mouseenter',function(){clearTimeout(t);m.style.display='block';});
+  dd.addEventListener('mouseleave',function(){t=setTimeout(function(){m.style.display='none';},150);});
+  dd.querySelector('button').addEventListener('click',function(e){e.stopPropagation();m.style.display=m.style.display==='block'?'none':'block';});
+});
+document.addEventListener('click',function(e){if(!e.target.closest('.nav-dd'))document.querySelectorAll('.nav-dd-menu').forEach(function(m){m.style.display='none';});});</script>
 </body>
 </html>
